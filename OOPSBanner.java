@@ -1,55 +1,59 @@
-public class OOPSBanner {
+public class OOPSBanner{
+
+    static class CharacterPattern {
+
+        char letter;       
+        String[] pattern;     
+
+        CharacterPattern(char letter, String[] pattern) {
+            this.letter = letter;
+            this.pattern = pattern;
+        }
+    }
 
     public static void main(String[] args) {
 
-        String[] o = getOPattern();
-        String[] p = getPPattern();
-        String[] s = getSPattern();
+        CharacterPattern O = new CharacterPattern('O', new String[]{
+                "  *****  ",
+                " *     * ",
+                "*       *",
+                "*       *",
+                "*       *",
+                " *     * ",
+                "  *****  "
+        });
 
-        String[] banner = new String[7];
+        CharacterPattern P = new CharacterPattern('P', new String[]{
+                " ******  ",
+                " *     * ",
+                " *     * ",
+                " ******  ",
+                " *       ",
+                " *       ",
+                " *       "
+        });
+
+        CharacterPattern S = new CharacterPattern('S', new String[]{
+                "  *****  ",
+                " *     * ",
+                " *       ",
+                "  *****  ",
+                "       * ",
+                " *     * ",
+                "  *****  "
+        });
+
+        CharacterPattern[] letters = { O, O, P, S };
 
         for (int i = 0; i < 7; i++) {
-            banner[i] = String.join("   ", o[i], o[i], p[i], s[i]);
-        }
 
-        for (String line : banner) {
+            StringBuilder line = new StringBuilder();
+
+            for (CharacterPattern cp : letters) {
+                line.append(cp.pattern[i]).append("   ");
+            }
+
             System.out.println(line);
         }
-    }
-
-    public static String[] getOPattern() {
-        return new String[] {
-            "  *****  ",
-            " *     * ",
-            "*       *",
-            "*       *",
-            "*       *",
-            " *     * ",
-            "  *****  "
-        };
-    }
-
-    public static String[] getPPattern() {
-        return new String[] {
-            " ******  ",
-            " *     * ",
-            " *     * ",
-            " ******  ",
-            " *       ",
-            " *       ",
-            " *       "
-        };
-    }
-
-    public static String[] getSPattern() {
-        return new String[] {
-            "  *****  ",
-            " *     * ",
-            " *       ",
-            "  *****  ",
-            "       * ",
-            " *     * ",
-            "  *****  "
-        };
     }
 }
